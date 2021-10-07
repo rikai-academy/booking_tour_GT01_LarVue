@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 Vue.config.productionTip = false
 
+// library.add(faUserSecret)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
