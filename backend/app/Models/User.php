@@ -2,43 +2,74 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
+    protected $table = 'users';
     protected $fillable = [
-        'name',
+        'fullname',
         'email',
         'password',
+        'phone_number',
+        'address',
+        'date_of_birth',
+        'role',
+        'status',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setpasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function tours()
+    {
+        return $this->belongsToMany(Tour::class);
+    }
+
+    public function bookings()
+    {
+        return $this->belongsToMany(Booking::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(LikeReview::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class);
+    }
+
+    public function reivews()
+    {
+        return $this->belongsToMany(Review::class);
+    }
+
+    public function ratings()
+    {
+        return $this->belongsToMany(Rating::class);
+    }
+
+    public function scopeGetByRole($query, $role) 
+    {
+        return $query->where('role', $role);
+    }
 }
