@@ -18,4 +18,9 @@ class Image extends Model
     {
         return $this->hasOne(Tour::class);
     }
+
+    public function scopeGetByTourId($query, $tourId)
+    {
+        return $query->where('tour_id', $tourId);
+    }
 }

@@ -13,11 +13,17 @@ import profile from '@/components/public/auth/profile'
 import contact from '@/components/public/auth/contact'
 import listreview from '@/components/public/review/list'
 import detailreview from '@/components/public/review/detail'
+import NotFoundComponent from '@/components/errors/NotFoundComponent'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '*',
+      name: 'notFound',
+      component: NotFoundComponent
+    },
     {
       path: '/',
       name: 'homepage',
@@ -39,7 +45,7 @@ export default new Router({
       component: tourlist
     },
     {
-      path: '/tourdetail/:id',
+      path: '/tour/:tourSlug',
       name: 'tourdetail',
       component: tourdetail
     },
