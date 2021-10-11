@@ -97,6 +97,12 @@
               </nav>
             </div>
             <ul class="menu-right-content clearfix">
+              <span v-if="authenticated">
+                   <form @submit="logout" action="">
+                        <button type="submit" class="theme-btn">{{ $t('Logout') }}</button>
+                   </form>
+              </span>
+              <span v-else>
               <li class="user-link">
                 <router-link to="/signinpage"
                   ><i class="fas fa-sign-in-alt"></i
@@ -107,6 +113,7 @@
                   ><i class="far fa-user"></i
                 ></router-link>
               </li>
+              </span>
             </ul>
           </div>
         </div>
@@ -174,8 +181,8 @@
     </header>
   </div>
 </template>
-
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
   data () {
     const language = localStorage.getItem('locale') || 'vi'
@@ -183,7 +190,22 @@ export default {
       language: language
     }
   },
+
+  computed: {
+    ...mapGetters({
+      authenticated: 'auth/authenticated',
+      user: 'auth/user'
+    })
+  },
   methods: {
+    ...mapActions({
+      signOut: 'auth/logoutAction'
+    }),
+    async logout () {
+      this.signOut().then(() => {
+        this.$router.replace({ name: '/' })
+      })
+    },
     handleChangeLanguage (language) {
       if (language !== this.language) {
         localStorage.setItem('locale', language)
