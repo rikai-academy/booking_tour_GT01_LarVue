@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -49,5 +50,13 @@ class Tour extends Model
     public function images()
     {
         return $this->belongsToMany(Image::class);
+    }
+
+    public function scopeGetByActive($query) {
+        return $query->where('status', Status::ACTIVE);
+    }
+
+    public function scopeGetBySlug($query, $slug) {
+        return $query->where('slug', $slug);
     }
 }
