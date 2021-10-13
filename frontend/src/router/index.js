@@ -30,6 +30,11 @@ export default new Router({
       component: homepage
     },
     {
+      path: '/home',
+      name: 'home',
+      component: homepage
+    },
+    {
       path: '/signuppage',
       name: 'signuppage',
       component: signuppage

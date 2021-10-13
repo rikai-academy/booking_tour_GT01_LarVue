@@ -6,8 +6,8 @@
         <section class="page-title centred" style="background-image: url(images/background/page-title-5.jpg);">
             <div class="auto-container">
                 <div class="content-box">
-                    <h1>Sign In</h1>
-                    <p>Discover your next great adventure</p>
+                    <h1>{{ $t('SignIn') }}</h1>
+                    <p>{{ $t('Discover_your_next_great_adventure') }}</p>
                 </div>
             </div>
         </section>
@@ -22,46 +22,46 @@
             <div class="auto-container">
                 <div class="inner-box">
                     <div class="sec-title centred">
-                        <p>Sign in</p>
-                        <h2>Connect with us for Better Tour</h2>
+                        <p>{{ $t('SignIn') }}</p>
+                        <h2>{{ $t('Connect_with_us_for_Better_Tour') }}</h2>
                     </div>
                     <div class="form-inner">
-                        <h3>Sign In with</h3>
+                        <h3>{{ $t('SignIn') }}</h3>
                         <ul class="social-links clearfix">
-                            <li><a href="signup.html"><span>Sign In with Facebook</span><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="signup.html"><span>Sign In with Google</span><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="signup.html"><span>Sign In with Twitter</span><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="signup.html"><span>{{ $t('Sign_In_with_Facebook') }}</span><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="signup.html"><span>{{ $t('Sign_In_with_Google') }}</span><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="signup.html"><span>{{ $t('Sign_In_with_Twitter') }}</span><i class="fab fa-twitter"></i></a></li>
                         </ul>
-                        <div class="text"><span>or</span></div>
-                        <form action="login.html" method="post" class="register-form">
+                        <div class="text"><span>{{ $t('Or') }}</span></div>
+                        <form @submit.prevent="submit" class="register-form">
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 column">
                                     <div class="form-group">
-                                        <label>Your Name</label>
-                                        <input type="text" name="name" required="">
+                                        <label>{{ $t('Your_email') }}</label>
+                                        <input type="text" v-model="form.email" name="name" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 column">
                                     <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" required="">
+                                        <label>{{ $t('Password') }}</label>
+                                        <input type="password" v-model="form.password" name="password" required="">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 column">
                                     <div class="form-group">
                                         <div class="forgor-password text-right">
-                                            <a href="login.html">Forget Password?</a>
+                                            <a href="login.html">{{ $t('Forget_Password') }}?</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 column">
                                     <div class="form-group message-btn">
-                                        <button type="submit" class="theme-btn">Sign In</button>
+                                        <button type="submit" class="theme-btn">{{ $t('Submit') }}</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <div class="other-text">Already have an account? <a href="signup.html">Register Now</a></div>
+                        <div class="other-text">{{ $t('Already_have_an_account') }}? <a href="signup.html">{{ $t('SignUp') }}</a></div>
                     </div>
                 </div>
             </div>
@@ -75,11 +75,30 @@
 <script>
 import headerpage from '../layouts/headerpage'
 import footerpage from '../layouts/footerpage'
+import {mapActions} from 'vuex'
 export default {
   name: 'HelloWorld',
   components: {
     headerpage,
     footerpage
+  },
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      logIn: 'auth/logIn'
+    }),
+    async submit () {
+      this.logIn(this.form).then(() => {
+        this.$router.replace({ name: 'home' })
+      })
+    }
   }
 }
 </script>

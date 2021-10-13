@@ -2,17 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import VueAxios from 'vue-axios'
-import axios from 'axios'
 import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-import store from './store'
+import axios from 'axios'
+import {store} from './store'
+import VueAxios from 'vue-axios'
 import moment from 'moment'
 import i18n from './plugins/i18n'
 
-Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
+Vue.use(VueAxios, axios)
 
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
@@ -38,13 +38,15 @@ Vue.filter('formatDate', function (value) {
   }
 })
 
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
 // library.add(faUserSecret)
 /* eslint-disable no-new */
-new Vue({
-  i18n,
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>',
-  store
+  new Vue({
+    i18n,
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
+  })
 })
