@@ -32,30 +32,7 @@
                       <a href="index.html">{{ $t('tours') }}</a>
                     </li>
                     <li class="dropdown">
-                      <a href="index.html">{{ $t('reviews') }}</a>
-                      <ul>
-                        <li>
-                          <router-link
-                            :to="{ name: 'listreview', params: { id: 1 } }"
-                          >
-                            {{ $t('food') }}
-                          </router-link>
-                        </li>
-                        <li>
-                          <router-link
-                            :to="{ name: 'listreview', params: { id: 1 } }"
-                          >
-                            {{ $t('place') }}
-                          </router-link>
-                        </li>
-                        <li>
-                          <router-link
-                            :to="{ name: 'listreview', params: { id: 1 } }"
-                          >
-                            {{ $t('news') }}
-                          </router-link>
-                        </li>
-                      </ul>
+                      <router-link :to="{ name: 'reviewCreate' }">{{ $t('reviews') }}</router-link>
                     </li>
                     <li class="dropdown">
                       <router-link to="/profile">{{ $t('profile') }}</router-link>

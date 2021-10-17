@@ -13,7 +13,8 @@ export default {
 
     user (state) {
       return state.user
-    }
+    },
+    isAuthenticated: state => !!state.token
   },
   mutations: {
     SET_TOKEN (state, token) {

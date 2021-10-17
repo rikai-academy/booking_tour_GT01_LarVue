@@ -14,6 +14,7 @@ import contact from '@/components/public/auth/contact'
 import listreview from '@/components/public/review/list'
 import detailreview from '@/components/public/review/detail'
 import NotFoundComponent from '@/components/errors/NotFoundComponent'
+import CreateComponent from '@/components/public/review/CreateComponent'
 
 Vue.use(Router)
 
@@ -93,6 +94,11 @@ export default new Router({
       path: '/detailreview/:id',
       name: 'detailreview',
       component: detailreview
+    },
+    {
+      path: '/review-create',
+      name: 'reviewCreate',
+      component: CreateComponent
     }
   ]
 })

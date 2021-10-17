@@ -10,9 +10,15 @@ import {store} from './store'
 import VueAxios from 'vue-axios'
 import moment from 'moment'
 import i18n from './plugins/i18n'
+import tinymce from 'vue-tinymce-editor'
+import Toast from 'vue-toastification'
+import 'vue-toastification/dist/index.css'
+import configtToast from './plugins/ConfigToast'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
+Vue.component('tinymce', tinymce)
+Vue.use(Toast, configtToast)
 
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'

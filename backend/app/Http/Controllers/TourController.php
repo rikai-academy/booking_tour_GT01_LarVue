@@ -17,7 +17,7 @@ class TourController extends Controller
     public function __construct(DateFormatService $dateFormatService)
     {
         $this->dateFormatService = $dateFormatService;
-    }
+    }                               
 
     public function index()
     {

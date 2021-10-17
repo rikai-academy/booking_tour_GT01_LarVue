@@ -50,5 +50,21 @@ export default {
   and: 'and',
   conditions: 'conditions',
   and_general_policy: 'and general policy',
-  Discover_your_next_great_adventure: 'Discover your next great adventure'
+  Discover_your_next_great_adventure: 'Discover your next great adventure',
+  error_check_login: 'Please login to continue.',
+  // Review Create
+  review_create: {
+    create_review: 'Create Review',
+    description_title: 'You can write a place, food or news review.',
+    categories: 'Categories',
+    place: 'Place',
+    food: 'Food',
+    news: 'News',
+    title: 'Title',
+    content: 'Content',
+    error_title: 'Please do not leave the title field blank.',
+    error_content: 'Please do not leave the content field blank.',
+    message_create_success: 'Thank you for rating.',
+    message_create_error: 'An error occurred, please try again later.'
+  }
 }

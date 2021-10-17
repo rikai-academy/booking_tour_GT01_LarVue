@@ -9,7 +9,7 @@ class CategoryTableSeed extends Seeder
 {
     public function run()
     {
-        $categories = ['Dia diem', 'Thuc an', 'Tin tuc'];
+        $categories = ['Place', 'Food', 'News'];
         
         for ($i=0; $i < count($categories); $i++) { 
             Category::create([

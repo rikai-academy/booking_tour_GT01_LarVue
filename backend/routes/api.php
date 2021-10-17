@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TourController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +18,14 @@ use App\Http\Controllers\public\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::apiResource('tours', TourController::class)->except('show');
+Route::apiResource('categories', CategoryController::class);
 
 Route::get('tours/{slug}', [TourController::class, 'showBySlug']);
 
+Route::group(['middleware' => 'auth:api'], function() {
+  Route::apiResource('reviews', ReviewController::class)->only('store');
+});
 
 Route::group([
     'middleware' => 'api',
@@ -34,6 +36,6 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 

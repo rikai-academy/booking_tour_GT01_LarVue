@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import moduleTours from './modules/tours'
+import moduleTours from './modules/tours/index'
 import auth from './auth'
+import moduleCategories from './modules/categories/index'
+import moduleReviews from './modules/reivews/index'
 
 Vue.use(Vuex)
 
@@ -18,6 +20,8 @@ export const store = new Vuex.Store({
   },
   modules: {
     auth,
-    tours: moduleTours
+    tours: moduleTours,
+    categories: moduleCategories,
+    reviews: moduleReviews
   }
 })

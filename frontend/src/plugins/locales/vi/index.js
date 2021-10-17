@@ -50,5 +50,21 @@ export default {
   and: 'và',
   conditions: 'điều kiện',
   and_general_policy: 'và chính sách chung',
-  Discover_your_next_great_adventure: 'Khám phá cuộc phiêu lưu tuyệt vời tiếp theo của bạn'
+  Discover_your_next_great_adventure: 'Khám phá cuộc phiêu lưu tuyệt vời tiếp theo của bạn',
+  error_check_login: 'Vui lòng đăng nhập để tiếp tục.',
+  // Review Create
+  review_create: {
+    create_review: 'Tạo bài đánh giá',
+    description_title: 'Bạn có thể viết bài đánh giá địa điểm, đồ ăn hoặc tin tức.',
+    categories: 'Danh mục',
+    place: 'Địa điểm',
+    food: 'Thức ăn',
+    news: 'Bài viết',
+    title: 'Tiêu đề',
+    content: 'Nội dung',
+    error_title: 'Vui lòng không bỏ trống trường tiêu đề.',
+    error_content: 'Vui lòng không bỏ trống trường nội dung.',
+    message_create_success: 'Cảm ơn bạn đã đánh giá.',
+    message_create_error: 'Đã xảy ra lỗi vui lòng thử lại sau.'
+  }
 }
